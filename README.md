@@ -29,7 +29,7 @@ You can simply put this into the `info.plist` file
 Do
 
 ```
-npm i --save @perfood/capacitor-healthkit
+npm i --save @pianissimoproject/capacitor-healthkit
 ```
 
 Then
@@ -50,7 +50,7 @@ import {
   QueryOutput,
   SampleNames,
   SleepData,
-} from '@perfood/capacitor-healthkit';
+} from '@pianissimoproject/capacitor-healthkit';
 
 const READ_PERMISSIONS = ['calories', 'stairs', 'activity', 'steps', 'distance', 'duration', 'weight'];
 
