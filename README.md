@@ -103,6 +103,7 @@ And you're all set ! :+1:
 
 * [`requestAuthorization(...)`](#requestauthorization)
 * [`queryHKitSampleType(...)`](#queryhkitsampletype)
+* [`queryHKStatisticsType(...)`](#queryhkstatisticstype)
 * [`isAvailable()`](#isavailable)
 * [`multipleQueryHKitSampleType(...)`](#multiplequeryhkitsampletype)
 * [`isEditionAuthorized(...)`](#iseditionauthorized)
@@ -136,6 +137,23 @@ queryHKitSampleType<T>(queryOptions: SingleQueryOptions) => Promise<QueryOutput<
 ```
 
 This defines a query to the Healthkit for a single type of data.
+
+| Param              | Type                                                              | Description                                                                                                            |
+| ------------------ | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **`queryOptions`** | <code><a href="#singlequeryoptions">SingleQueryOptions</a></code> | defines the type of data and the timeframe which shall be queried, a limit can be set to reduce the number of results. |
+
+**Returns:** <code>Promise&lt;<a href="#queryoutput">QueryOutput</a>&lt;T&gt;&gt;</code>
+
+--------------------
+
+
+### queryHKStatisticsType(...)
+
+```typescript
+queryHKStatisticsType<T>(queryOptions: SingleQueryOptions) => Promise<QueryOutput<T>>
+```
+
+This method queries HealthKit for statistical data (e.g. cumulative sums or averages) over a specific time range.
 
 | Param              | Type                                                              | Description                                                                                                            |
 | ------------------ | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -197,8 +215,8 @@ multipleIsEditionAuthorized(queryOptions: MultipleEditionQuery) => Promise<void>
 
 Checks if there is writing permission for multiple sample types. This function has not been tested.
 
-| Param              | Type                                                                  | Description                                                                |
-| ------------------ | --------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Param              | Type                                                                  | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | **`queryOptions`** | <code><a href="#multipleeditionquery">MultipleEditionQuery</a></code> | defines the sampletypes for which you need to check for writing permission. |
 
 --------------------
@@ -259,8 +277,8 @@ This is used for checking writing permissions.
 
 This is used for checking writing permissions.
 
-| Prop              | Type                   |
-| ----------------- | ---------------------- |
+| Prop              | Type                  |
+| ----------------- | --------------------- |
 | **`sampleNames`** | <code>string[]</code> |
 
 </docgen-api>

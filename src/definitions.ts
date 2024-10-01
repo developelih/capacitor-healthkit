@@ -10,6 +10,11 @@ export interface CapacitorHealthkitPlugin {
    * @param queryOptions defines the type of data and the timeframe which shall be queried, a limit can be set to reduce the number of results.
    */
   queryHKitSampleType<T>(queryOptions:SingleQueryOptions): Promise<QueryOutput<T>>;
+    /**
+   * This method queries HealthKit for statistical data (e.g. cumulative sums or averages) over a specific time range.
+   * @param queryOptions defines the type of data and the timeframe which shall be queried, a limit can be set to reduce the number of results.
+   */
+  queryHKStatisticsType<T>(queryOptions:SingleQueryOptions): Promise<QueryOutput<T>>;
   /**
    * This functions resolves if HealthKitData is available it uses the native HKHealthStore.isHealthDataAvailable() funtion of the HealthKit .
    */

@@ -565,6 +565,73 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         }
         healthStore.execute(query)
     }
+
+    @objc func queryHKStatisticsType(_ call: CAPPluginCall) {
+        guard let _sampleName = call.options["sampleName"] as? String else {
+            return call.reject("Must provide sampleName")
+        }
+        guard let startDateString = call.options["startDate"] as? String else {
+            return call.reject("Must provide startDate")
+        }
+        guard let endDateString = call.options["endDate"] as? String else {
+            return call.reject("Must provide endDate")
+        }
+
+        let _startDate = getDateFromString(inputDate: startDateString)
+        let _endDate = getDateFromString(inputDate: endDateString)
+        guard let _limit = call.options["limit"] as? Int else {
+            return call.reject("Must provide limit")
+        }
+
+        let limit: Int = (_limit == 0) ? HKObjectQueryNoLimit : _limit
+
+        let predicate = HKQuery.predicateForSamples(withStart: _startDate, end: _endDate, options: HKQueryOptions.strictStartDate)
+
+        guard let sampleType = getSampleType(sampleName: _sampleName) as? HKQuantityType else {
+            return call.reject("Error in sample name or incompatible type for statistics query")
+        }
+
+        // Define the statistics options based on your requirements
+        var statisticsOptions: HKStatisticsOptions = []
+        
+        switch _sampleName {
+        case "stepCount", "distanceWalkingRunning":
+            statisticsOptions = [.cumulativeSum]
+        case "heartRate", "bloodPressure":
+            statisticsOptions = [.discreteAverage]
+        default:
+            return call.reject("Unsupported sample type for statistics query")
+        }
+
+        let query = HKStatisticsQuery(quantityType: sampleType, quantitySamplePredicate: predicate, options: statisticsOptions) { _, statistics, _ in
+            guard let statistics = statistics else {
+                return call.reject("No statistics available for given sample type")
+            }
+            
+            var results: [HKSample] = []
+
+            if let quantity = statistics.sumQuantity() ?? statistics.averageQuantity() {
+                let quantitySample = HKQuantitySample(
+                    type: sampleType,
+                    quantity: quantity,
+                    start: statistics.startDate,
+                    end: statistics.endDate,
+                    metadata: nil
+                )
+                results.append(quantitySample)
+            }
+
+            guard let output: [[String: Any]] = self.generateOutput(sampleName: _sampleName, results: results) else {
+                return call.reject("Error happened while generating outputs")
+            }
+            call.resolve([
+                "countReturn": output.count,
+                "resultData": output,
+            ])
+        }
+
+        healthStore.execute(query)
+    }
     
     @objc func isAvailable(_ call: CAPPluginCall) {
         if HKHealthStore.isHealthDataAvailable() {
