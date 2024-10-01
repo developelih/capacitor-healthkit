@@ -9,7 +9,7 @@
   "files": [
     "dist/",
     "ios/Plugin/",
-    "PerfoodCapacitorHealthkit.podspec"
+    "PianissimoProjectCapacitorHealthkit.podspec"
   ],
   "author": "Perfood GmbH",
   "license": "MIT",
