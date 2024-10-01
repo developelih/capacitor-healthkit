@@ -1,5 +1,5 @@
 {
-  "name": "@pianissimoproject/capacitor-healthkit-custom",
+  "name": "@pianissimoproject/capacitor-healthkit",
   "version": "1.0.0",
   "description": "Capacitor plugin to read data from and write data to Apple Health",
   "main": "dist/plugin.cjs.js",
@@ -15,10 +15,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perfood/capacitor-healthkit.git"
+    "url": "git+https://github.com/developelih/capacitor-healthkit.git"
   },
   "bugs": {
-    "url": "https://github.com/perfood/capacitor-healthkit/issues"
+    "url": "https://github.com/developelih/capacitor-healthkit/issues"
   },
   "keywords": [
     "capacitor",
