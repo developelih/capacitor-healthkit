@@ -10,14 +10,14 @@ var healthStore = HKHealthStore()
  */
 @objc(CapacitorHealthkitPlugin)
 public class CapacitorHealthkitPlugin: CAPPlugin {
-
+    
     enum HKSampleError: Error {
         case sleepRequestFailed
         case workoutRequestFailed
         case quantityRequestFailed
         case sampleTypeFailed
         case deniedDataAccessFailed
-
+        
         var outputMessage: String {
             switch self {
             case .sleepRequestFailed:
@@ -33,7 +33,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
             }
         }
     }
-
+    
     func getSampleType(sampleName: String) -> HKSampleType? {
         switch sampleName {
         case "stepCount":
@@ -80,7 +80,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
             return nil
         }
     }
-
+    
     func getTypes(items: [String]) -> Set<HKSampleType> {
         var types: Set<HKSampleType> = []
         for item in items {
@@ -130,166 +130,166 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
     }
     
     func returnWorkoutActivityTypeValueDictionnary(activityType: HKWorkoutActivityType) -> String {
-         // from https://github.com/georgegreenoflondon/HKWorkoutActivityType-Descriptions/blob/master/HKWorkoutActivityType%2BDescriptions.swift
-         switch activityType {
-         case HKWorkoutActivityType.americanFootball:
-             return "American Football"
-         case HKWorkoutActivityType.archery:
-             return "Archery"
-         case HKWorkoutActivityType.australianFootball:
-             return "Australian Football"
-         case HKWorkoutActivityType.badminton:
-             return "Badminton"
-         case HKWorkoutActivityType.baseball:
-             return "Baseball"
-         case HKWorkoutActivityType.basketball:
-             return "Basketball"
-         case HKWorkoutActivityType.bowling:
-             return "Bowling"
-         case HKWorkoutActivityType.boxing:
-             return "Boxing"
-         case HKWorkoutActivityType.climbing:
-             return "Climbing"
-         case HKWorkoutActivityType.crossTraining:
-             return "Cross Training"
-         case HKWorkoutActivityType.curling:
-             return "Curling"
-         case HKWorkoutActivityType.cycling:
-             return "Cycling"
-         case HKWorkoutActivityType.dance:
-             return "Dance"
-         case HKWorkoutActivityType.danceInspiredTraining:
-             return "Dance Inspired Training"
-         case HKWorkoutActivityType.elliptical:
-             return "Elliptical"
-         case HKWorkoutActivityType.equestrianSports:
-             return "Equestrian Sports"
-         case HKWorkoutActivityType.fencing:
-             return "Fencing"
-         case HKWorkoutActivityType.fishing:
-             return "Fishing"
-         case HKWorkoutActivityType.functionalStrengthTraining:
-             return "Functional Strength Training"
-         case HKWorkoutActivityType.golf:
-             return "Golf"
-         case HKWorkoutActivityType.gymnastics:
-             return "Gymnastics"
-         case HKWorkoutActivityType.handball:
-             return "Handball"
-         case HKWorkoutActivityType.hiking:
-             return "Hiking"
-         case HKWorkoutActivityType.hockey:
-             return "Hockey"
-         case HKWorkoutActivityType.hunting:
-             return "Hunting"
-         case HKWorkoutActivityType.lacrosse:
-             return "Lacrosse"
-         case HKWorkoutActivityType.martialArts:
-             return "Martial Arts"
-         case HKWorkoutActivityType.mindAndBody:
-             return "Mind and Body"
-         case HKWorkoutActivityType.mixedMetabolicCardioTraining:
-             return "Mixed Metabolic Cardio Training"
-         case HKWorkoutActivityType.paddleSports:
-             return "Paddle Sports"
-         case HKWorkoutActivityType.play:
-             return "Play"
-         case HKWorkoutActivityType.preparationAndRecovery:
-             return "Preparation and Recovery"
-         case HKWorkoutActivityType.racquetball:
-             return "Racquetball"
-         case HKWorkoutActivityType.rowing:
-             return "Rowing"
-         case HKWorkoutActivityType.rugby:
-             return "Rugby"
-         case HKWorkoutActivityType.running:
-             return "Running"
-         case HKWorkoutActivityType.sailing:
-             return "Sailing"
-         case HKWorkoutActivityType.skatingSports:
-             return "Skating Sports"
-         case HKWorkoutActivityType.snowSports:
-             return "Snow Sports"
-         case HKWorkoutActivityType.soccer:
-             return "Soccer"
-         case HKWorkoutActivityType.softball:
-             return "Softball"
-         case HKWorkoutActivityType.squash:
-             return "Squash"
-         case HKWorkoutActivityType.stairClimbing:
-             return "Stair Climbing"
-         case HKWorkoutActivityType.surfingSports:
-             return "Surfing Sports"
-         case HKWorkoutActivityType.swimming:
-             return "Swimming"
-         case HKWorkoutActivityType.tableTennis:
-             return "Table Tennis"
-         case HKWorkoutActivityType.tennis:
-             return "Tennis"
-         case HKWorkoutActivityType.trackAndField:
-             return "Track and Field"
-         case HKWorkoutActivityType.traditionalStrengthTraining:
-             return "Traditional Strength Training"
-         case HKWorkoutActivityType.volleyball:
-             return "Volleyball"
-         case HKWorkoutActivityType.walking:
-             return "Walking"
-         case HKWorkoutActivityType.waterFitness:
-             return "Water Fitness"
-         case HKWorkoutActivityType.waterPolo:
-             return "Water Polo"
-         case HKWorkoutActivityType.waterSports:
-             return "Water Sports"
-         case HKWorkoutActivityType.wrestling:
-             return "Wrestling"
-         case HKWorkoutActivityType.yoga:
-             return "Yoga"
-         // iOS 10
-         case HKWorkoutActivityType.barre:
-             return "Barre"
-         case HKWorkoutActivityType.coreTraining:
-             return "Core Training"
-         case HKWorkoutActivityType.crossCountrySkiing:
-             return "Cross Country Skiing"
-         case HKWorkoutActivityType.downhillSkiing:
-             return "Downhill Skiing"
-         case HKWorkoutActivityType.flexibility:
-             return "Flexibility"
-         case HKWorkoutActivityType.highIntensityIntervalTraining:
-             return "High Intensity Interval Training"
-         case HKWorkoutActivityType.jumpRope:
-             return "Jump Rope"
-         case HKWorkoutActivityType.kickboxing:
-             return "Kickboxing"
-         case HKWorkoutActivityType.pilates:
-             return "Pilates"
-         case HKWorkoutActivityType.snowboarding:
-             return "Snowboarding"
-         case HKWorkoutActivityType.stairs:
-             return "Stairs"
-         case HKWorkoutActivityType.stepTraining:
-             return "Step Training"
-         case HKWorkoutActivityType.wheelchairWalkPace:
-             return "Wheelchair Walk Pace"
-         case HKWorkoutActivityType.wheelchairRunPace:
-             return "Wheelchair Run Pace"
-         // iOS 11
-         case HKWorkoutActivityType.taiChi:
-             return "Tai Chi"
-         case HKWorkoutActivityType.mixedCardio:
-             return "Mixed Cardio"
-         case HKWorkoutActivityType.handCycling:
-             return "Hand Cycling"
-         // iOS 13
-         case HKWorkoutActivityType.discSports:
-             return "Disc Sports"
-         case HKWorkoutActivityType.fitnessGaming:
-             return "Fitness Gaming"
-         // Catch-all
-         default:
-             return "Other"
-         }
-     }
+        // from https://github.com/georgegreenoflondon/HKWorkoutActivityType-Descriptions/blob/master/HKWorkoutActivityType%2BDescriptions.swift
+        switch activityType {
+        case HKWorkoutActivityType.americanFootball:
+            return "American Football"
+        case HKWorkoutActivityType.archery:
+            return "Archery"
+        case HKWorkoutActivityType.australianFootball:
+            return "Australian Football"
+        case HKWorkoutActivityType.badminton:
+            return "Badminton"
+        case HKWorkoutActivityType.baseball:
+            return "Baseball"
+        case HKWorkoutActivityType.basketball:
+            return "Basketball"
+        case HKWorkoutActivityType.bowling:
+            return "Bowling"
+        case HKWorkoutActivityType.boxing:
+            return "Boxing"
+        case HKWorkoutActivityType.climbing:
+            return "Climbing"
+        case HKWorkoutActivityType.crossTraining:
+            return "Cross Training"
+        case HKWorkoutActivityType.curling:
+            return "Curling"
+        case HKWorkoutActivityType.cycling:
+            return "Cycling"
+        case HKWorkoutActivityType.dance:
+            return "Dance"
+        case HKWorkoutActivityType.danceInspiredTraining:
+            return "Dance Inspired Training"
+        case HKWorkoutActivityType.elliptical:
+            return "Elliptical"
+        case HKWorkoutActivityType.equestrianSports:
+            return "Equestrian Sports"
+        case HKWorkoutActivityType.fencing:
+            return "Fencing"
+        case HKWorkoutActivityType.fishing:
+            return "Fishing"
+        case HKWorkoutActivityType.functionalStrengthTraining:
+            return "Functional Strength Training"
+        case HKWorkoutActivityType.golf:
+            return "Golf"
+        case HKWorkoutActivityType.gymnastics:
+            return "Gymnastics"
+        case HKWorkoutActivityType.handball:
+            return "Handball"
+        case HKWorkoutActivityType.hiking:
+            return "Hiking"
+        case HKWorkoutActivityType.hockey:
+            return "Hockey"
+        case HKWorkoutActivityType.hunting:
+            return "Hunting"
+        case HKWorkoutActivityType.lacrosse:
+            return "Lacrosse"
+        case HKWorkoutActivityType.martialArts:
+            return "Martial Arts"
+        case HKWorkoutActivityType.mindAndBody:
+            return "Mind and Body"
+        case HKWorkoutActivityType.mixedMetabolicCardioTraining:
+            return "Mixed Metabolic Cardio Training"
+        case HKWorkoutActivityType.paddleSports:
+            return "Paddle Sports"
+        case HKWorkoutActivityType.play:
+            return "Play"
+        case HKWorkoutActivityType.preparationAndRecovery:
+            return "Preparation and Recovery"
+        case HKWorkoutActivityType.racquetball:
+            return "Racquetball"
+        case HKWorkoutActivityType.rowing:
+            return "Rowing"
+        case HKWorkoutActivityType.rugby:
+            return "Rugby"
+        case HKWorkoutActivityType.running:
+            return "Running"
+        case HKWorkoutActivityType.sailing:
+            return "Sailing"
+        case HKWorkoutActivityType.skatingSports:
+            return "Skating Sports"
+        case HKWorkoutActivityType.snowSports:
+            return "Snow Sports"
+        case HKWorkoutActivityType.soccer:
+            return "Soccer"
+        case HKWorkoutActivityType.softball:
+            return "Softball"
+        case HKWorkoutActivityType.squash:
+            return "Squash"
+        case HKWorkoutActivityType.stairClimbing:
+            return "Stair Climbing"
+        case HKWorkoutActivityType.surfingSports:
+            return "Surfing Sports"
+        case HKWorkoutActivityType.swimming:
+            return "Swimming"
+        case HKWorkoutActivityType.tableTennis:
+            return "Table Tennis"
+        case HKWorkoutActivityType.tennis:
+            return "Tennis"
+        case HKWorkoutActivityType.trackAndField:
+            return "Track and Field"
+        case HKWorkoutActivityType.traditionalStrengthTraining:
+            return "Traditional Strength Training"
+        case HKWorkoutActivityType.volleyball:
+            return "Volleyball"
+        case HKWorkoutActivityType.walking:
+            return "Walking"
+        case HKWorkoutActivityType.waterFitness:
+            return "Water Fitness"
+        case HKWorkoutActivityType.waterPolo:
+            return "Water Polo"
+        case HKWorkoutActivityType.waterSports:
+            return "Water Sports"
+        case HKWorkoutActivityType.wrestling:
+            return "Wrestling"
+        case HKWorkoutActivityType.yoga:
+            return "Yoga"
+            // iOS 10
+        case HKWorkoutActivityType.barre:
+            return "Barre"
+        case HKWorkoutActivityType.coreTraining:
+            return "Core Training"
+        case HKWorkoutActivityType.crossCountrySkiing:
+            return "Cross Country Skiing"
+        case HKWorkoutActivityType.downhillSkiing:
+            return "Downhill Skiing"
+        case HKWorkoutActivityType.flexibility:
+            return "Flexibility"
+        case HKWorkoutActivityType.highIntensityIntervalTraining:
+            return "High Intensity Interval Training"
+        case HKWorkoutActivityType.jumpRope:
+            return "Jump Rope"
+        case HKWorkoutActivityType.kickboxing:
+            return "Kickboxing"
+        case HKWorkoutActivityType.pilates:
+            return "Pilates"
+        case HKWorkoutActivityType.snowboarding:
+            return "Snowboarding"
+        case HKWorkoutActivityType.stairs:
+            return "Stairs"
+        case HKWorkoutActivityType.stepTraining:
+            return "Step Training"
+        case HKWorkoutActivityType.wheelchairWalkPace:
+            return "Wheelchair Walk Pace"
+        case HKWorkoutActivityType.wheelchairRunPace:
+            return "Wheelchair Run Pace"
+            // iOS 11
+        case HKWorkoutActivityType.taiChi:
+            return "Tai Chi"
+        case HKWorkoutActivityType.mixedCardio:
+            return "Mixed Cardio"
+        case HKWorkoutActivityType.handCycling:
+            return "Hand Cycling"
+            // iOS 13
+        case HKWorkoutActivityType.discSports:
+            return "Disc Sports"
+        case HKWorkoutActivityType.fitnessGaming:
+            return "Fitness Gaming"
+            // Catch-all
+        default:
+            return "Other"
+        }
+    }
     
     func getTimeZoneString(sample: HKSample? = nil, shouldReturnDefaultTimeZoneInExceptions _: Bool = true) -> String {
         var timeZone: TimeZone?
@@ -305,7 +305,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         let timeZoneString = String(format: "%+.2d:%.2d", hours, minutes)
         return timeZoneString
     }
-
+    
     func generateOutput(sampleName: String, results: [HKSample]?) -> [[String: Any]]? {
         var output: [[String: Any]] = []
         if results == nil {
@@ -337,12 +337,12 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                 guard let sample = result as? HKWorkout else {
                     return nil
                 }
-
+                
                 var TEBData: Double? = -1
                 var TDData: Double? = -1
                 var TFCData: Double? = -1
                 var TSSCData: Double? = -1
-
+                
                 var unitTEB: HKUnit?
                 if (sample.totalEnergyBurned) != nil {
                     if (sample.totalEnergyBurned?.is(compatibleWith: HKUnit.kilocalorie()))! {
@@ -351,7 +351,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                     guard unitTEB != nil else { return nil }
                     TEBData = sample.totalEnergyBurned?.doubleValue(for: unitTEB!)
                 }
-
+                
                 var unitTD: HKUnit?
                 if (sample.totalDistance) != nil {
                     if (sample.totalDistance?.is(compatibleWith: HKUnit.meter()))! {
@@ -360,7 +360,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                     guard unitTD != nil else { return nil }
                     TDData = sample.totalDistance?.doubleValue(for: unitTD!)
                 }
-
+                
                 var unitTFC: HKUnit?
                 if (sample.totalFlightsClimbed) != nil {
                     if (sample.totalFlightsClimbed?.is(compatibleWith: HKUnit.count()))! {
@@ -369,7 +369,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                     guard unitTFC != nil else { return nil }
                     TFCData = sample.totalFlightsClimbed?.doubleValue(for: unitTFC!)
                 }
-
+                
                 var unitTSSC: HKUnit?
                 if (sample.totalSwimmingStrokeCount) != nil {
                     if (sample.totalSwimmingStrokeCount?.is(compatibleWith: HKUnit.count()))! {
@@ -378,12 +378,12 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                     guard unitTSSC != nil else { return nil }
                     TSSCData = sample.totalSwimmingStrokeCount?.doubleValue(for: unitTSSC!)
                 }
-
+                
                 let workoutSD = sample.startDate as NSDate
                 let workoutED = sample.endDate as NSDate
                 let workoutInterval = workoutED.timeIntervalSince(workoutSD as Date)
                 let workoutHoursBetweenDates = workoutInterval / 3600
-
+                
                 output.append([
                     "uuid": sample.uuid.uuidString,
                     "startDate": ISO8601DateFormatter().string(from: sample.startDate),
@@ -405,7 +405,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                 }
                 var unit: HKUnit?
                 var unitName: String?
-
+                
                 if sampleName == "heartRate" {
                     unit = HKUnit(from: "count/min")
                     unitName = "BPM"
@@ -454,8 +454,8 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                 } else {
                     print("Error: unknown unit type")
                 }
-
-                var value: Double 
+                
+                var value: Double
                 let quantitySD: NSDate
                 let quantityED: NSDate
                 quantitySD = sample.startDate as NSDate
@@ -463,7 +463,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
                 let quantityInterval = quantityED.timeIntervalSince(quantitySD as Date)
                 let quantitySecondsInAnHour: Double = 3600
                 let quantityHoursBetweenDates = quantityInterval / quantitySecondsInAnHour
-
+                
                 output.append([
                     "uuid": sample.uuid.uuidString,
                     "value": sample.quantity.doubleValue(for: unit!),
@@ -479,7 +479,7 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         }
         return output
     }
-
+    
     func getDeviceInformation(device: HKDevice?) -> [String: String?]? {
         if (device == nil) {
             return nil;
@@ -492,16 +492,16 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
             "hardwareVersion": device?.hardwareVersion,
             "softwareVersion": device?.softwareVersion,
         ];
-                
+        
         return deviceInformation;
     }
-
+    
     func getDateFromString(inputDate: String) -> Date{
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
         return formatter.date(from: inputDate)!
     }
-
+    
     
     @objc func requestAuthorization(_ call: CAPPluginCall) {
         if !HKHealthStore.isHealthDataAvailable() {
@@ -516,10 +516,10 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         guard let _write = call.options["write"] as? [String] else {
             return call.reject("Must provide write")
         }
-
+        
         let writeTypes: Set<HKSampleType> = getTypes(items: _write).union(getTypes(items: _all))
         let readTypes: Set<HKSampleType> = getTypes(items: _read).union(getTypes(items: _all))
-
+        
         healthStore.requestAuthorization(toShare: writeTypes, read: readTypes) { success, _ in
             if !success {
                 call.reject("Could not get permission")
@@ -538,21 +538,21 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         guard let endDateString = call.options["endDate"] as? String else {
             return call.reject("Must provide endDate")
         }
-
+        
         let _startDate = getDateFromString(inputDate: startDateString)
         let _endDate = getDateFromString(inputDate: endDateString)
         guard let _limit = call.options["limit"] as? Int else {
             return call.reject("Must provide limit")
         }
-
+        
         let limit: Int = (_limit == 0) ? HKObjectQueryNoLimit : _limit
-
+        
         let predicate = HKQuery.predicateForSamples(withStart: _startDate, end: _endDate, options: HKQueryOptions.strictStartDate)
-
+        
         guard let sampleType: HKSampleType = getSampleType(sampleName: _sampleName) else {
             return call.reject("Error in sample name")
         }
-
+        
         let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: limit, sortDescriptors: nil) {
             _, results, _ in
             guard let output: [[String: Any]] = self.generateOutput(sampleName: _sampleName, results: results) else {
@@ -565,9 +565,9 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         }
         healthStore.execute(query)
     }
-
-    @objc func queryHKStatisticsType(_ call: CAPPluginCall) {
-        guard let _sampleName = call.options["sampleName"] as? String else {
+    
+     @objc func queryHKStatisticsCollectionType(_ call: CAPPluginCall) {
+        guard let sampleName = call.options["sampleName"] as? String else {
             return call.reject("Must provide sampleName")
         }
         guard let startDateString = call.options["startDate"] as? String else {
@@ -576,63 +576,66 @@ public class CapacitorHealthkitPlugin: CAPPlugin {
         guard let endDateString = call.options["endDate"] as? String else {
             return call.reject("Must provide endDate")
         }
-
-        let _startDate = getDateFromString(inputDate: startDateString)
-        let _endDate = getDateFromString(inputDate: endDateString)
-        guard let _limit = call.options["limit"] as? Int else {
-            return call.reject("Must provide limit")
+        guard let intervalString = call.options["interval"] as? String else {
+            return call.reject("Must provide interval")
         }
 
-        let limit: Int = (_limit == 0) ? HKObjectQueryNoLimit : _limit
+        let startDate = getDateFromString(inputDate: startDateString)
+        let endDate = getDateFromString(inputDate: endDateString)
 
-        let predicate = HKQuery.predicateForSamples(withStart: _startDate, end: _endDate, options: HKQueryOptions.strictStartDate)
-
-        guard let sampleType = getSampleType(sampleName: _sampleName) as? HKQuantityType else {
-            return call.reject("Error in sample name or incompatible type for statistics query")
-        }
-
-        // Define the statistics options based on your requirements
-        var statisticsOptions: HKStatisticsOptions = []
-        
-        switch _sampleName {
-        case "stepCount", "distanceWalkingRunning":
-            statisticsOptions = [.cumulativeSum]
-        case "heartRate", "bloodPressure":
-            statisticsOptions = [.discreteAverage]
+        let dateComponents: DateComponents
+        switch intervalString {
+        case "hour":
+            dateComponents = DateComponents(hour: 1)
+        case "day":
+            dateComponents = DateComponents(day: 1)
+        case "week":
+            dateComponents = DateComponents(weekOfYear: 1)
+        case "month":
+            dateComponents = DateComponents(month: 1)
         default:
-            return call.reject("Unsupported sample type for statistics query")
+            return call.reject("Unsupported interval type")
         }
 
-        let query = HKStatisticsQuery(quantityType: sampleType, quantitySamplePredicate: predicate, options: statisticsOptions) { _, statistics, _ in
-            guard let statistics = statistics else {
-                return call.reject("No statistics available for given sample type")
+        guard let sampleType = getSampleType(sampleName: sampleName) as? HKQuantityType else {
+            return call.reject("Error in sample name or incompatible type for statistics collection query")
+        }
+
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+
+        let query = HKStatisticsCollectionQuery(quantityType: sampleType,
+                                                quantitySamplePredicate: predicate,
+                                                options: [.cumulativeSum],
+                                                anchorDate: startDate,
+                                                intervalComponents: dateComponents)
+
+        query.initialResultsHandler = { query, statisticsCollection, error in
+            if let error = error {
+                return call.reject("Error querying HealthKit: \(error.localizedDescription)")
             }
+
+            var results: [[String: Any]] = []
             
-            var results: [HKSample] = []
-
-            if let quantity = statistics.sumQuantity() ?? statistics.averageQuantity() {
-                let quantitySample = HKQuantitySample(
-                    type: sampleType,
-                    quantity: quantity,
-                    start: statistics.startDate,
-                    end: statistics.endDate,
-                    metadata: nil
-                )
-                results.append(quantitySample)
+            // Enumerate through the results
+            statisticsCollection?.enumerateStatistics(from: startDate, to: endDate) { (statistic, stop) in
+                if let quantity = statistic.sumQuantity() {
+                    results.append([
+                        "startDate": statistic.startDate,
+                        "endDate": statistic.endDate,
+                        "value": quantity.doubleValue(for: HKUnit.count())
+                    ])
+                }
             }
 
-            guard let output: [[String: Any]] = self.generateOutput(sampleName: _sampleName, results: results) else {
-                return call.reject("Error happened while generating outputs")
-            }
             call.resolve([
-                "countReturn": output.count,
-                "resultData": output,
+                "countReturn": results.count,
+                "resultData": results
             ])
         }
 
         healthStore.execute(query)
     }
-    
+
     @objc func isAvailable(_ call: CAPPluginCall) {
         if HKHealthStore.isHealthDataAvailable() {
             return call.resolve()

@@ -103,7 +103,7 @@ And you're all set ! :+1:
 
 * [`requestAuthorization(...)`](#requestauthorization)
 * [`queryHKitSampleType(...)`](#queryhkitsampletype)
-* [`queryHKStatisticsType(...)`](#queryhkstatisticstype)
+* [`queryHKStatisticsCollectionType(...)`](#queryhkstatisticscollectiontype)
 * [`isAvailable()`](#isavailable)
 * [`multipleQueryHKitSampleType(...)`](#multiplequeryhkitsampletype)
 * [`isEditionAuthorized(...)`](#iseditionauthorized)
@@ -147,13 +147,13 @@ This defines a query to the Healthkit for a single type of data.
 --------------------
 
 
-### queryHKStatisticsType(...)
+### queryHKStatisticsCollectionType(...)
 
 ```typescript
-queryHKStatisticsType<T>(queryOptions: SingleQueryOptions) => Promise<QueryOutput<T>>
+queryHKStatisticsCollectionType<T>(queryOptions: SingleQueryOptions) => Promise<QueryOutput<T>>
 ```
 
-This method queries HealthKit for statistical data (e.g. cumulative sums or averages) over a specific time range.
+This method queries HealthKit for  multiple statistics queries over a series of fixed-length time intervals.
 
 | Param              | Type                                                              | Description                                                                                                            |
 | ------------------ | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |

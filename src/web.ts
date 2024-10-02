@@ -22,7 +22,7 @@ export class CapacitorHealthkitWeb
     throw this.unimplemented('Not implemented on web.');
   }
 
-  async queryHKStatisticsType(_queryOptions: SingleQueryOptions): Promise<any> {
+  async queryHKStatisticsCollectionType(_queryOptions: SingleQueryOptions): Promise<any> {
     throw this.unimplemented('Not implemented on web.');
   }
 
